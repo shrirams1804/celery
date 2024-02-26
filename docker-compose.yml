@@ -22,6 +22,7 @@ services:
     container_name: celery
     build:
       context: ./dcelery
+    command: celery --app=dcelery worker -l INFO
     volumes:
       - ./dcelery:/user/src/app/
     environment:
