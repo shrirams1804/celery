@@ -1,0 +1,15 @@
+import os
+from celery import Celery
+
+
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'dcelery.settings')
+
+# creating celery instance,created celery application
+app = Celery("dcelery")
+app.conf.from_object("django.conf:settings",namespace="CELERY")
+
+@app.task
+def add_numbers():
+    return
+
+app.autodiscover_tasks()
