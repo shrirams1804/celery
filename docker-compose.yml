@@ -22,7 +22,7 @@ services:
     container_name: celery
     build:
       context: ./dcelery
-    command: celery --app=dcelery worker -l INFO
+    command: celery --app=dcelery worker -l INFO -Q queue1
     volumes:
       - ./dcelery:/user/src/app/
     environment:
@@ -38,7 +38,7 @@ services:
     build:
       context: ./celeryworker
       dockerfile: Dockerfile
-    command: celery -A celerytask worker -l INFO
+    command: celery -A celerytask worker -l INFO -Q queue2
     volumes:
       - ./celeryworker:/user/src/app/
     depends_on:
