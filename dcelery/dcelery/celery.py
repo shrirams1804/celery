@@ -13,6 +13,9 @@ app.config_from_object("django.conf:settings",namespace="CELERY")
 #     'newapp.tasks.*':{'queue':'queue2'},
 # }
 # scheduling tasks based on priorities,priorities are from 0 to 9
+
+app.conf.task_default_rate_limit = '1/m'
+
 app.conf.broker_transport_options = {
     'priority_steps':list(range(10)),
     'sep':':',
