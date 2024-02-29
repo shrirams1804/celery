@@ -29,9 +29,12 @@ app.conf.worker_prefetch_multiplier = 1
 app.conf.worker_concurrency = 1
 
 @app.task(queue='tasks')
-def t1():
+def t1(a,b,message=None):
+    result = a+b
     time.sleep(3)
-    return 
+    if message:
+        result = f"{message}:{result}"
+    return result
 @app.task(queue='tasks')
 def t2():
     time.sleep(3)
@@ -56,3 +59,41 @@ def t3():
 #     'queue_order_strategy':'priority',
 # }
 app.autodiscover_tasks()
+
+def test():
+    # call asynchronously
+    result = t1.apply_async(args=[5,10],kwargs={'message':"Hi Dear"})
+
+    # check if task has completed
+    if result.ready():
+        print("Task has completed")
+    else:
+        print("Task is still running")
+    
+    # check if the task completed successfully
+    if result.successful():
+        print("Task Completed Successfully")
+    else:
+        print("Task encountered an error")
+
+    # get the result of the task
+    try:
+        task_reuslt = result.get()
+        print("Task result: ",task_reuslt)
+    except Exception as e:
+        print("An exception occured: ",str(e))
+
+    # get the exception (if any) that ocuured during task exception
+    exception = result.get(propagate=False)
+    if exception:
+        print("An error occured during task execution: ",str(exception)) 
+
+    '''
+    >>> from dcelery.celery import t1
+    >>> from dcelery.celery import test
+    >>> test()
+    Task is still running
+    Task encountered an error
+    Task result:  Hi Dear:15
+    An error occured during task execution:  Hi Dear:15
+    '''

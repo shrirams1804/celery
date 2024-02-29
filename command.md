@@ -34,3 +34,19 @@ docker stop $(docker ps -aq) && docker rm $(docker ps -aq) && docker rmi $(docke
 in terminal,run on dajngo to inspect task
 celery inspect active
 celery inspect active_queues
+
+# passing arguments and returining result from celery task
+>>> from dcelery.celery import t1,t2,t3
+>>> t1.apply_async(args=[5,10],kwargs={'message':"Hi Dear"})
+<AsyncResult: c5c07bfa-8d72-4d69-856e-67d482e57e57>
+>>> result = t1.apply_async(args=[5,10],kwargs={'message':"Hi Dear"})
+>>> result.get()
+'Hi Dear:15'
+
+>>> from dcelery.celery import t1
+>>> from dcelery.celery import test
+>>> test()
+Task is still running
+Task encountered an error
+Task result:  Hi Dear:15
+An error occured during task execution:  Hi Dear:15
