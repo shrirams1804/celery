@@ -97,3 +97,16 @@ def test():
     Task result:  Hi Dear:15
     An error occured during task execution:  Hi Dear:15
     '''
+# synchronous execution
+def execute_sync():
+    result = t1.apply_async(args=[5,10],kwargs={"message":"The sum is "})
+    # blocking the code execution
+    task_result = result.get()
+    print("Task is running synchronously")
+    print(task_result)
+
+# asynchronous execution
+def execute_async():
+    result = t1.apply_async(args=[5,10],kwargs={"message":"The sum is "})
+    print("Task is running asynchronously")
+    print("Task ID: ",result.task_id)
