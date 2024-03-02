@@ -55,3 +55,7 @@ An error occured during task execution:  Hi Dear:15
 # using custom task classes,error handling
 from dcelery.celery_tasks.ex2_custom_task_class import my_task
 my_task.delay()
+
+# using custom task classes,retry
+>>> from dcelery.celery_tasks.ex3_auto_retry import my_task
+>>> my_task.delay()
