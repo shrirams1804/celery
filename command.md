@@ -59,3 +59,12 @@ my_task.delay()
 # using custom task classes,retry
 >>> from dcelery.celery_tasks.ex3_auto_retry import my_task
 >>> my_task.delay()
+
+# error handling in groups
+>>> from dcelery.celery_tasks.ex4_error_handling_groups import run_tasks
+>>> run_tasks()
+Task Completed:<bound method AsyncResult.get of <AsyncResult: c57dea1e-aca7-443a-9044-0b1ce5ee72ce>>
+Task Completed:<bound method AsyncResult.get of <AsyncResult: 3d1f9b6a-17ef-4605-a38e-25aa7f3614cc>>
+Task Completed:<bound method AsyncResult.get of <AsyncResult: ed0f4ee2-a7f6-4730-90f3-143d29686dcf>>
+Task Failed: ,Error number is invalid
+Task Completed:<bound method AsyncResult.get of <AsyncResult: 9bbea174-81fe-492b-b796-5565329e4e9b>>
