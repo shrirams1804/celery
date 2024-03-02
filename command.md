@@ -50,3 +50,8 @@ Task is still running
 Task encountered an error
 Task result:  Hi Dear:15
 An error occured during task execution:  Hi Dear:15
+
+
+# using custom task classes,error handling
+from dcelery.celery_tasks.ex2_custom_task_class import my_task
+my_task.delay()
