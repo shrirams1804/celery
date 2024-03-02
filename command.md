@@ -68,3 +68,7 @@ Task Completed:<bound method AsyncResult.get of <AsyncResult: 3d1f9b6a-17ef-4605
 Task Completed:<bound method AsyncResult.get of <AsyncResult: ed0f4ee2-a7f6-4730-90f3-143d29686dcf>>
 Task Failed: ,Error number is invalid
 Task Completed:<bound method AsyncResult.get of <AsyncResult: 9bbea174-81fe-492b-b796-5565329e4e9b>>
+
+# error handling in task chaining
+>>> from dcelery.celery_tasks.ex5_error_handling_chain import run_task_chain
+>>> run_task_chain()
