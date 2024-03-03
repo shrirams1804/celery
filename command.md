@@ -88,3 +88,7 @@ from dcelery.celery_tasks.ex8_linking_result_callbacks import run_task
 # handling error in task result callbacks
 >>> from dcelery.celery_tasks.ex8_linking_result_callbacks import run_task
 >>> run_task()
+
+# task signals graceful shtdown and cleanup of failed tasks
+>>> from dcelery.celery_tasks.ex9_task_signals_graceful_shutdown_and_cleanup import run_task
+>>> run_task()

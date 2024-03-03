@@ -37,7 +37,7 @@ services:
     container_name: celery
     build:
       context: ./dcelery
-    command: celery --app=dcelery worker -l INFO -Q tasks,dead_letter
+    command: celery --app=dcelery worker -l INFO -Q tasks,dead_letter -E
     volumes:
       - ./dcelery:/user/src/app/
     environment:
