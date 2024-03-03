@@ -92,3 +92,7 @@ from dcelery.celery_tasks.ex8_linking_result_callbacks import run_task
 # task signals graceful shtdown and cleanup of failed tasks
 >>> from dcelery.celery_tasks.ex9_task_signals_graceful_shutdown_and_cleanup import run_task
 >>> run_task()
+
+# error tacking and monitoring with sentry
+from dcelery.celery_tasks.ex10_error_tracking_and_monitoring_with_sentry import divide_numbers
+divide_numbers.delay(10,0)

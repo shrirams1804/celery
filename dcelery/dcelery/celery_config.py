@@ -1,4 +1,6 @@
 import os
+import sentry_sdk 
+from sentry_sdk.integrations.celery import CeleryIntegration
 from celery import Celery
 # Kombu is a messaging library for Python. It is an open-source project that provides a high-level interface to the Advanced Message Queuing Protocol (AMQP).
 from kombu import Exchange, Queue
@@ -10,6 +12,8 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'dcelery.settings')
 # creating celery instance,created celery application
 app = Celery("dcelery")
 app.config_from_object("django.conf:settings",namespace="CELERY")
+sentry_dsn = "https://bbefd564cd9095b9b734a6fe2cbf75d0@o1100296.ingest.us.sentry.io/4506848182992896"
+sentry_sdk.init(dsn=sentry_dsn,integrations=[CeleryIntegration()])
 
 app.conf.task_queues = [
     Queue('tasks', Exchange('tasks'), routing_key='tasks',
