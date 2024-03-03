@@ -13,7 +13,8 @@ app.config_from_object("django.conf:settings",namespace="CELERY")
 
 app.conf.task_queues = [
     Queue('tasks', Exchange('tasks'), routing_key='tasks',
-          queue_arguments={'x-max-priority': 10}),# 10 is highest prio,1 is lowest prio
+          queue_arguments={'x-max-priority': 10}),# 10 is highest prio,1 is lowest priority
+    Queue('dead_letter',routing_key='dead_letter'),
 ]
 # enables late acknowledgement task in celery
 app.conf.task_acks_late = True

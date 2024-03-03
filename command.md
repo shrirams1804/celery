@@ -72,3 +72,7 @@ Task Completed:<bound method AsyncResult.get of <AsyncResult: 9bbea174-81fe-492b
 # error handling in task chaining
 >>> from dcelery.celery_tasks.ex5_error_handling_chain import run_task_chain
 >>> run_task_chain()
+
+# dead letter queus,handling failed tasks
+>>> from dcelery.celery_tasks.ex6_dead_letter_queue import run_task_group
+>>> run_task_group()
