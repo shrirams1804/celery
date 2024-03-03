@@ -76,3 +76,8 @@ Task Completed:<bound method AsyncResult.get of <AsyncResult: 9bbea174-81fe-492b
 # dead letter queus,handling failed tasks
 >>> from dcelery.celery_tasks.ex6_dead_letter_queue import run_task_group
 >>> run_task_group()
+
+# task timeouts and task revoking
+>>> from dcelery.celery_tasks.ex7_task_timeouts_revoking import long_running_task
+>>> long_running_task()
+>>> long_running_task.delay()
