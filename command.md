@@ -81,3 +81,10 @@ Task Completed:<bound method AsyncResult.get of <AsyncResult: 9bbea174-81fe-492b
 >>> from dcelery.celery_tasks.ex7_task_timeouts_revoking import long_running_task
 >>> long_running_task()
 >>> long_running_task.delay()
+
+# handling errors in task result callbacks
+from dcelery.celery_tasks.ex8_linking_result_callbacks import run_task
+
+# handling error in task result callbacks
+>>> from dcelery.celery_tasks.ex8_linking_result_callbacks import run_task
+>>> run_task()
