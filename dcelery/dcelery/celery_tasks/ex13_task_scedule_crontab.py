@@ -6,22 +6,22 @@ from celery.schedules import crontab
 
 
 app.conf.beat_schedule = {
-    'task1':{
-        'task':'dcelery.celery_tasks.ex13_task_schedule_crontab.task1',
-        # we set here run this task every 5 seconds
-        'schedule':crontab(minute='0-59/1', hour='0-18', day_of_week='mon'),
-        'kwargs':{'foo':'bar'},
-        'args':(18,4),
-        'options':{
-            'queue':'tasks',
-            'priory':5,
-        }
-    },
-    'task2':{
-        'task':'dcelery.celery_tasks.ex13_task_schedule_crontab.task2',
-        # we set here run this task every 10 seconds
-        'schedule':timedelta(seconds=10),
-    }
+    # 'task1':{
+    #     'task':'dcelery.celery_tasks.ex13_task_schedule_crontab.task1',
+    #     # we set here run this task every 5 seconds
+    #     'schedule':crontab(minute='0-59/1', hour='0-18', day_of_week='mon'),
+    #     'kwargs':{'foo':'bar'},
+    #     'args':(18,4),
+    #     'options':{
+    #         'queue':'tasks',
+    #         'priory':5,
+    #     }
+    # },
+    # 'task2':{
+    #     'task':'dcelery.celery_tasks.ex13_task_schedule_crontab.task2',
+    #     # we set here run this task every 10 seconds
+    #     'schedule':timedelta(seconds=10),
+    # }
 }
 # we need to trigger these tasks at specific interval, we will setup that in our schedular
 # we need to specify the interval, that is time wait before we execute the task again

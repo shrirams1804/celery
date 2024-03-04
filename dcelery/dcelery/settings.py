@@ -23,6 +23,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'newapp',
+    'django_celery_beat',
 ]
 
 MIDDLEWARE = [
@@ -113,4 +114,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # rabbitmq => service name
 CELERY_BROKER_URL = os.environ.get("CELERY_BROKER","amqp://guest:guest@rabbitmq:5672/")
 CELERY_RESULT_BACKEND = os.environ.get("CELERY_BACKEND","redis://redis:6379/0")
-
+CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'

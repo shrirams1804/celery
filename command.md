@@ -96,3 +96,22 @@ from dcelery.celery_tasks.ex8_linking_result_callbacks import run_task
 # error tacking and monitoring with sentry
 from dcelery.celery_tasks.ex10_error_tracking_and_monitoring_with_sentry import divide_numbers
 divide_numbers.delay(10,0)
+
+
+## Error
+1:00 https://docs.celeryq.dev/en/latest/internals/protocol.html
+2024-03-04 19:21:00 for more information.
+2024-03-04 19:21:00 
+2024-03-04 19:21:00 The full contents of the message body was:
+2024-03-04 19:21:00 '[[18, 4], {"foo": "bar"}, {"callbacks": null, "errbacks": null, "chain": null, "chord": null}]' (94b)
+2024-03-04 19:21:00 
+2024-03-04 19:21:00 The full contents of the message headers:
+2024-03-04 19:21:00 {'argsrepr': '[18, 4]', 'eta': None, 'expires': None, 'group': None, 'group_index': None, 'id': '62845044-296d-4161-9032-dfbbef74be9b', 'ignore_result': False, 'kwargsrepr': "{'foo': 'bar'}", 'lang': 'py', 'origin': 'gen13@6bb6b17e52d2', 'parent_id': None, 'replaced_task_nesting': 0, 'retries': 0, 'root_id': '62845044-296d-4161-9032-dfbbef74be9b', 'shadow': None, 'stamped_headers': None, 'stamps': {}, 'task': 'dcelery.celery_tasks.ex13_task_schedule_crontab.task1', 'timelimit': [None, None]}
+2024-03-04 19:21:00 
+2024-03-04 19:21:00 The delivery info for this task is:
+2024-03-04 19:21:00 {'consumer_tag': 'None4', 'delivery_tag': 1, 'redelivered': False, 'exchange': '', 'routing_key': 'tasks'}
+2024-03-04 19:21:00 Traceback (most recent call last):
+2024-03-04 19:21:00   File "/usr/local/lib/python3.11/site-packages/celery/worker/consumer/consumer.py", line 658, in on_task_received
+2024-03-04 19:21:00     strategy = strategies[type_]
+2024-03-04 19:21:00                ~~~~~~~~~~^^^^^^^
+2024-03-04 19:21:00 KeyError: 'dcelery.celery_tasks.ex13_task_schedule_crontab.task1'
