@@ -51,3 +51,6 @@ if os.path.exists(task_folder) and os.path.isdir(task_folder):
 
 
     app.autodiscover_tasks(task_modules)
+
+# now it will search for other tasks also in module settings 
+app.autodiscover_tasks()
