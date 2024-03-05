@@ -12,7 +12,7 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'dcelery.settings')
 # creating celery instance,created celery application
 app = Celery("dcelery")
 app.config_from_object("django.conf:settings",namespace="CELERY")
-sentry_dsn = "https://bbefd564cd9095b9b734a6fe2cbf75d0@o1100296.ingest.us.sentry.io/4506848182992896"
+sentry_dsn = os.environ.get("SENTRY_DSN")
 sentry_sdk.init(dsn=sentry_dsn,integrations=[CeleryIntegration()])
 
 app.conf.task_queues = [
